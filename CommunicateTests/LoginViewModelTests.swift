@@ -25,17 +25,19 @@ class LoginViewModelTests: XCTestCase {
     func testLoginValidationFail() {
             let userEmail = "anonymous@123.com"
             let password = "123456"
-        firebaseMockNetwork.performLogin(userEmail: userEmail, password: password) { isLoginResponse in
-            XCTAssertFalse(isLoginResponse)
+        loginViewModel.performLogin(email: userEmail, password: password) { response in
+            XCTAssertFalse(response)
         }
+        
     }
     
     func testLoginValidationSuccess() {
         let userEmail = "tommy@123.com"
         let password = "123456"
-        firebaseMockNetwork.performLogin(userEmail: userEmail, password: password) { isLoginResponse in
-            XCTAssertTrue(isLoginResponse)
+        loginViewModel.performLogin(email: userEmail, password: password) { response in
+            XCTAssertTrue(response)
         }
     }
     
+
 }

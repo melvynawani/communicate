@@ -18,9 +18,20 @@ class ChatViewController: UIViewController {
         super.viewDidLoad()
         navigationItem.hidesBackButton = true
         tableView.dataSource = self
-        tableView.register(UINib(nibName: K.chatCellNibName, bundle: nil), forCellReuseIdentifier: K.chatCellIdentifier)
-        chatViewModel.loadMessages(chatViewObject: self)
-        
+        tableView.register(UINib(nibName: Constants.chatCellNibName, bundle: nil), forCellReuseIdentifier: Constants.chatCellIdentifier)
+        chatViewModel.loadMessages { response, indexPath in
+            
+            switch response {
+            case true:
+                self.tableView.reloadData()
+                if let indexPath = indexPath {
+                    self.tableView.scrollToRow(at: indexPath, at: .top, animated: true)
+                }
+            default:
+                print("Error Loading Messages")
+            }
+
+        }
     }
     
     @IBAction func logOutPressed(_ sender: Any) {
@@ -45,7 +56,7 @@ extension ChatViewController:UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let message = chatViewModel.messages[indexPath.row]
-        let cell = tableView.dequeueReusableCell(withIdentifier: K.chatCellIdentifier, for: indexPath) as! MessageTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: Constants.chatCellIdentifier, for: indexPath) as! MessageTableViewCell
         if (message.sender == Auth.auth().currentUser?.email){
             cell.leftImageView.isHidden = true
             cell.rightImageView.isHidden = false
@@ -61,6 +72,7 @@ extension ChatViewController:UITableViewDataSource{
             cell.messageLabel.textColor = .black
             
         }
+        
     
         return cell
     }

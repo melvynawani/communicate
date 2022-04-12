@@ -9,7 +9,9 @@ import UIKit
 
 class SignUpViewController: UIViewController {
 
-    let signUpViewModel: SignUpViewModelType = SignUpViewModel()
+    let signUpViewModel: SignUpViewModelType = SignUpViewModel(firebaseNetworkManager: FirebaseNetworkManager())
+    
+    
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var emailTextField: UITextField!
     override func viewDidLoad() {
@@ -19,7 +21,16 @@ class SignUpViewController: UIViewController {
     
     @IBAction func signUpPressed(_ sender: Any) {
         if let email = emailTextField.text , let password = passwordTextField.text{
-            signUpViewModel.performSignUp(email: email, password: password, signUpViewObject: self)
+            signUpViewModel.performSignUp(email: email, password: password) { response, errorMessage in
+                if (response == true){
+                    self.performSegue(withIdentifier: Constants.signUpSegue, sender: nil)
+                }
+                else if (response == false){
+                    let alertController = UIAlertController(title: "⚠️", message: errorMessage, preferredStyle: .alert)
+                    alertController.addAction(UIAlertAction(title: "Retry", style: .default, handler: nil))
+                    self.present(alertController, animated: true, completion: nil)
+                }
+            }
         }
     }
 

@@ -10,8 +10,7 @@ import FirebaseAuth
 
 protocol LoginViewModelType {
     func forgotPassword(email: String, loginViewObject: LoginViewController)
-    func performLogin(email: String, password: String, loginViewObject: LoginViewController )
-}
+    func performLogin(email: String, password: String, completionHandler:@escaping(_ response: Bool)->Void)}
 
 class LoginViewModel: LoginViewModelType {
     private let firebaseNetworkManager: FirebaseNetworkManagerType
@@ -20,18 +19,14 @@ class LoginViewModel: LoginViewModelType {
           self.firebaseNetworkManager = firebaseNetworkManager
       }
     
-    func performLogin(email: String, password: String, loginViewObject: LoginViewController){
+    func performLogin(email: String, password: String, completionHandler:@escaping(_ response: Bool)->Void){
         firebaseNetworkManager.performLogin(userEmail: email, password: password, completionHandler:  { response in
-            if response == true{
-                loginViewObject.performSegue(withIdentifier: K.loginSegue, sender: UIButton.self)
-                print(response)
-            }
-            else if response == false {
-                DispatchQueue.main.async {
-                    let alertController = UIAlertController(title: "⚠️", message: K.loginFailMessage, preferredStyle: .alert)
-                    alertController.addAction(UIAlertAction(title: "Retry", style: .default, handler: nil))
-                    loginViewObject.present(alertController, animated: true, completion: nil)
-                }
+            
+            switch response {
+            case true:
+                completionHandler(true)
+            default:
+                completionHandler(false)
             }
             
         })
@@ -40,13 +35,13 @@ class LoginViewModel: LoginViewModelType {
     
     func forgotPassword(email: String, loginViewObject: LoginViewController){
         firebaseNetworkManager.forgotPassword(userEmail: email) { response in
-            if response == true{
-                let alertController = UIAlertController(title: "🔔", message: K.passwordResetSuccess , preferredStyle: .alert)
+            if response == true {
+                let alertController = UIAlertController(title: "🔔", message: Constants.passwordResetSuccess , preferredStyle: .alert)
                 alertController.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
                 loginViewObject.present(alertController, animated: true, completion: nil)
             }
             else if response == false {
-                let alertController = UIAlertController(title: "🔔", message: K.passwordResetFail, preferredStyle: .alert)
+                let alertController = UIAlertController(title: "🔔", message: Constants.passwordResetFail, preferredStyle: .alert)
                 alertController.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
                 loginViewObject.present(alertController, animated: true, completion: nil)
             }

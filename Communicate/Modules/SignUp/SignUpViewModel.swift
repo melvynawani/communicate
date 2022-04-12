@@ -9,19 +9,26 @@ import Foundation
 import FirebaseAuth
 
 protocol SignUpViewModelType {
-    func performSignUp(email: String, password: String, signUpViewObject: SignUpViewController)
-}
+    func performSignUp(email: String, password: String, completionHandler:@escaping (Bool, String?)->Void)}
 
 class SignUpViewModel: SignUpViewModelType {
+    
+    private let firebaseNetworkManager: FirebaseNetworkManagerType
+      
+      init(firebaseNetworkManager: FirebaseNetworkManagerType){
+          self.firebaseNetworkManager = firebaseNetworkManager
+      }
  
-    func performSignUp(email: String, password: String, signUpViewObject: SignUpViewController) {
-        Auth.auth().createUser(withEmail: email, password: password) { authResult, error in
-            if let e = error{
-                print (e.localizedDescription)
-            } else{
-                signUpViewObject.performSegue(withIdentifier: K.signUpSegue, sender: self)
+    func performSignUp(email: String, password: String, completionHandler:@escaping (Bool, String?)->Void) {
+        firebaseNetworkManager.performSignUp(email: email, password: password) { response, errorMessage in
+            switch response {
+            case true:
+                completionHandler(true, nil)
+            case false:
+                completionHandler(false, errorMessage)
             }
+            
         }
-        
     }
+    
 }

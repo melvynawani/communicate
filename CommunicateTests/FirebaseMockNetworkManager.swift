@@ -11,11 +11,20 @@ import Foundation
 
 
 class FirebaseMockNetworkManager: FirebaseNetworkManagerType {
+    func performSignUp(email: String, password: String, completionHandler: @escaping (Bool, String?) -> Void) {
+        if email == "tommy@123.com" && password == "123456"{
+            completionHandler(false, "Sign up failed")
+        }
+        else if email != "tommy@123.com" {
+            completionHandler(true, "Sign up successful")
+        }
+    }
+    
     func performLogin(userEmail: String?, password: String?, completionHandler: @escaping (Bool) -> Void) {
-        if userEmail == "tommy@123.com" && password == "123456"{
+        if userEmail == "tommy@123.com" && password == "123456" {
             completionHandler(true)
         }
-        else{
+        else {
             completionHandler(false)
         }
     }
@@ -33,5 +42,4 @@ class FirebaseMockNetworkManager: FirebaseNetworkManagerType {
         print("Logged out")
     }
     
-
     }

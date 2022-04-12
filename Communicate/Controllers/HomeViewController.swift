@@ -15,7 +15,7 @@ class HomeViewController: UIViewController {
         super.viewDidLoad()
     }
     override func viewDidAppear(_ animated: Bool) {
-        appNameLbl.text = K.appName
+        appNameLbl.text = Constants.appName
     }
 
 

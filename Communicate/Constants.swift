@@ -7,7 +7,7 @@
 
 import Foundation
 
-class K{
+class Constants{
     static let appName = "💬 Communicate"
     static let loginSegue = "LoginToChat"
     static let signUpSegue = "SignUpToChat"
@@ -16,6 +16,7 @@ class K{
     static let loginFailMessage = "Incorrect email address or password"
     static let passwordResetSuccess = "A password reset link has been sent to your email address"
     static let passwordResetFail = "Email address entered is not registered, please enter a registered email and then press 'Forgot Password' to reset your password"
+    
     
 
     struct FirebaseStore {

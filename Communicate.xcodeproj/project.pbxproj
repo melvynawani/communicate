@@ -11,6 +11,7 @@
 		B147E848280431A6004575C0 /* FirebaseNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B147E847280431A6004575C0 /* FirebaseNetworkManager.swift */; };
 		B147E84B28044158004575C0 /* LoginViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B147E84A28044158004575C0 /* LoginViewModelTests.swift */; };
 		B147E84D28044181004575C0 /* FirebaseMockNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B147E84C28044181004575C0 /* FirebaseMockNetworkManager.swift */; };
+		B147E85128059166004575C0 /* SignUpViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B147E85028059166004575C0 /* SignUpViewModelTests.swift */; };
 		B1FE8F0727FDD49800311C5E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1FE8F0627FDD49800311C5E /* AppDelegate.swift */; };
 		B1FE8F0927FDD49800311C5E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1FE8F0827FDD49800311C5E /* SceneDelegate.swift */; };
 		B1FE8F0B27FDD49800311C5E /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1FE8F0A27FDD49800311C5E /* HomeViewController.swift */; };
@@ -64,6 +65,7 @@
 		B147E847280431A6004575C0 /* FirebaseNetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseNetworkManager.swift; sourceTree = "<group>"; };
 		B147E84A28044158004575C0 /* LoginViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModelTests.swift; sourceTree = "<group>"; };
 		B147E84C28044181004575C0 /* FirebaseMockNetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseMockNetworkManager.swift; sourceTree = "<group>"; };
+		B147E85028059166004575C0 /* SignUpViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewModelTests.swift; sourceTree = "<group>"; };
 		B1FE8F0327FDD49800311C5E /* Communicate.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Communicate.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B1FE8F0627FDD49800311C5E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B1FE8F0827FDD49800311C5E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -185,6 +187,7 @@
 			children = (
 				B147E84A28044158004575C0 /* LoginViewModelTests.swift */,
 				B147E84C28044181004575C0 /* FirebaseMockNetworkManager.swift */,
+				B147E85028059166004575C0 /* SignUpViewModelTests.swift */,
 			);
 			path = CommunicateTests;
 			sourceTree = "<group>";
@@ -529,6 +532,7 @@
 			files = (
 				B147E84B28044158004575C0 /* LoginViewModelTests.swift in Sources */,
 				B147E84D28044181004575C0 /* FirebaseMockNetworkManager.swift in Sources */,
+				B147E85128059166004575C0 /* SignUpViewModelTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
