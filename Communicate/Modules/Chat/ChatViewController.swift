@@ -30,9 +30,30 @@ class ChatViewController: UIViewController {
             default:
                 print("Error Loading Messages")
             }
-
         }
+        self.view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(hideKeyboard)))
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
+    
+    @objc private func hideKeyboard(){
+        self.view.endEditing(true)
+    }
+    
+    @objc private func keyboardWillShow(notification: NSNotification){
+        if let keyboardFrame: NSValue = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
+            let keyboardHeight = keyboardFrame.cgRectValue.height
+            self.view.frame.origin.y -= keyboardHeight
+        }
+        
+        
+    }
+    
+    @objc private func keyboardWillHide(notification: NSNotification){
+        self.view.frame.origin.y = 0
+        
+    }
+    
     
     @IBAction func logOutPressed(_ sender: Any) {
         chatViewModel.logOut()
@@ -72,8 +93,6 @@ extension ChatViewController:UITableViewDataSource{
             cell.messageLabel.textColor = .black
             
         }
-        
-    
         return cell
     }
     

@@ -16,7 +16,12 @@ class SignUpViewController: UIViewController {
     @IBOutlet weak var emailTextField: UITextField!
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(hideKeyboard)))
 
+    }
+    
+    @objc private func hideKeyboard(){
+        self.view.endEditing(true)
     }
     
     @IBAction func signUpPressed(_ sender: Any) {

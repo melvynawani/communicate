@@ -7,16 +7,19 @@
 
 import UIKit
 
-protocol LoginViewControllerType {
-    
-    func segueToChatViewController()
-}
 class LoginViewController: UIViewController {
 
     let loginViewModel: LoginViewModelType = LoginViewModel(firebaseNetworkManager: FirebaseNetworkManager())
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var emailTextField: UITextField!
     
+    override func viewDidLoad() {
+        self.view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(hideKeyboard)))
+        
+    }
+    @objc private func hideKeyboard(){
+        self.view.endEditing(true)
+    }
     
     @IBAction func forgotPasswordPressed(_ sender: Any) {
         if let email = emailTextField.text {
@@ -49,18 +52,7 @@ class LoginViewController: UIViewController {
                     alertController.addAction(UIAlertAction(title: "Retry", style: .default, handler: nil))
                     self.present(alertController, animated: true, completion: nil)
                 }
-                
             }
         }
-    }
-    
-
-
-}
-
-extension LoginViewController: LoginViewControllerType {
-    func segueToChatViewController(){
-        performSegue(withIdentifier: Constants.loginSegue, sender: UIButton.self)
-
     }
 }
