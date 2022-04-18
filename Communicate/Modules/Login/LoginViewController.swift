@@ -20,7 +20,19 @@ class LoginViewController: UIViewController {
     
     @IBAction func forgotPasswordPressed(_ sender: Any) {
         if let email = emailTextField.text {
-            loginViewModel.forgotPassword(email: email, loginViewObject: self)
+            loginViewModel.forgotPassword(email: email) { response in
+                switch response {
+                case true:
+                    let alertController = UIAlertController(title: "🔔", message: Constants.passwordResetSuccess , preferredStyle: .alert)
+                    alertController.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+                    self.present(alertController, animated: true, completion: nil)
+
+                default:
+                    let alertController = UIAlertController(title: "🔔", message: Constants.passwordResetFail, preferredStyle: .alert)
+                    alertController.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+                    self.present(alertController, animated: true, completion: nil)
+                }
+            }
         }
     }
     
