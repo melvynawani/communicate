@@ -2,12 +2,12 @@
 
 Communicate is an instant messaging platforms that allows users to chat.
 
-
-<img width="1440" alt="Screenshot 2022-08-08 at 22 57 19" src="https://user-images.githubusercontent.com/66224847/183524368-aba4e0a2-22b6-43b7-b58c-e5616207a26f.png">
-<img width="1440" alt="Screenshot 2022-08-08 at 22 57 33" src="https://user-images.githubusercontent.com/66224847/183524360-a2af7624-edf6-4446-937b-2a0ca7a3f2f0.png">
-<img width="1440" alt="Screenshot 2022-08-08 at 22 57 57" src="https://user-images.githubusercontent.com/66224847/183524356-9bd82a5d-7d73-4724-9016-20810afa029c.png">
-<img width="1440" alt="Screenshot 2022-08-08 at 22 58 40" src="https://user-images.githubusercontent.com/66224847/183524351-42369864-a1be-4f24-a0b8-ff39700f3a37.png">
-
+<p align="left">
+  <img src="https://user-images.githubusercontent.com/66224847/183885607-96bc780f-e69c-436e-abb3-cf0ea1490a65.png" width="200" />
+  <img src="https://user-images.githubusercontent.com/66224847/183885613-ac44f991-399a-4250-8652-66383369a7ee.png" width="200" /> 
+  <img src="https://user-images.githubusercontent.com/66224847/183885622-5b46273c-d246-43bd-8be2-4799d8d256d6.png" width="200"/>
+  <img src="https://user-images.githubusercontent.com/66224847/183885628-4d0e0b0e-ccd9-4fe0-b587-0c092ca9f39a.png" width="200" /> 
+</p>
 
 ### Tools Used: ###
 * Swift
